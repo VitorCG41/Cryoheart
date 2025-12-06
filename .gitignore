@@ -1,0 +1,18 @@
+# =============== Pastas Temporarias e de Build ===============
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/Assets/AssetStoreTools/
+/Assets/StreamingAssets/
+
+# =============== Configuracoes Pessoais (nao compartilhadas) ===============
+/Assets/AssetStoreTools/
+# Arquivos de Layout do Usuario
+/[Ll]ogs/
+/UserSettings/
+# Pastas geradas pelo instalador do Unity (Windows)
+/Assets/Editor/Koreographer/
+/Assets/Editor/Koreographer/Koreographer_Windows.targets
+/Assets/Editor/Koreographer/Koreographer_Windows.targets.meta
