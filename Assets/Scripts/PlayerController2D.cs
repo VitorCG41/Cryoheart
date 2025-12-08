@@ -50,13 +50,34 @@ using UnityEngine.InputSystem;
 public class PlayerController2D : MonoBehaviour
 {
     private Vector2 moveDirection = Vector2.zero;
+    private Rigidbody2D rb;
 
     public float velocidade = 5f;
+    public float forcaPulo = 15f;
+
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float groundCheckRadius = 0.1f;
+    [SerializeField] private LayerMask groundLayer; 
+
+    private bool isGrounded;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     public void OnMove(InputValue value)
     {
         moveDirection = value.Get<Vector2>();
         moveDirection.Set(moveDirection.x, 0);
+    }
+
+    public void OnJump(InputValue value)
+    {
+        if (rb != null)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, forcaPulo);
+        }
     }
 
     void Update()
