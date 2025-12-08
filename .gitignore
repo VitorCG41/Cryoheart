@@ -16,3 +16,5 @@
 /Assets/Editor/Koreographer/
 /Assets/Editor/Koreographer/Koreographer_Windows.targets
 /Assets/Editor/Koreographer/Koreographer_Windows.targets.meta
+
+.vs/
