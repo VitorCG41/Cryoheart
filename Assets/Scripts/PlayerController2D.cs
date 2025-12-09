@@ -59,7 +59,10 @@ public class PlayerController2D : MonoBehaviour
     [SerializeField] private float groundCheckRadius = 0.1f;
     [SerializeField] private LayerMask groundLayer; 
 
-    private bool isGrounded;
+    private bool estaNoSolo;
+
+    public int maxPulosExtras = 0;
+    private int pulosRestantes = 0;
 
     private void Awake()
     {
@@ -74,15 +77,32 @@ public class PlayerController2D : MonoBehaviour
 
     public void OnJump(InputValue value)
     {
-        if (rb != null)
+
+        if (estaNoSolo)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, forcaPulo);
+            return;
         }
+
+        if (pulosRestantes > 0)
+        {
+            pulosRestantes--;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, forcaPulo);
+        }
+
     }
 
     void Update()
     {
         Vector2 deslocamento = moveDirection * velocidade * Time.deltaTime;
         transform.Translate(deslocamento);
+
+        estaNoSolo = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundCheckRadius,
+            groundLayer
+        );
+
+        if (estaNoSolo) pulosRestantes = maxPulosExtras; 
     }
 }
