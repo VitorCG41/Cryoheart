@@ -28,9 +28,9 @@ public class PlayerController2D : MonoBehaviour
 
     // Ataque 
 
-    public GameObject hitboxAtaque;
-    // public float alcanceAtaque = 0.5f;   
-    // public LayerMask enemyLayers;       
+    public BoxCollider2D hitboxAtaque;
+    public SpriteRenderer visualAtaque;
+           
     public float taxaAtaque = 3f;
     public float duracaoAtaque = 0.2f;
 
@@ -77,20 +77,13 @@ public class PlayerController2D : MonoBehaviour
 
     IEnumerator Atacar()
     {
+        hitboxAtaque.enabled = true;
+        visualAtaque.enabled = true;
 
-        //Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
-        //        hitboxAtaque.position, alcanceAtaque, enemyLayers);
-
-        hitboxAtaque.SetActive(true);
         yield return new WaitForSeconds(duracaoAtaque);
-        hitboxAtaque.SetActive(false);
 
-
-        // Aplica dano
-        //foreach (Collider2D enemy in hitEnemies)
-        //{
-        //    enemy.GetComponent<Enemy>()?.TakeDamage(1);
-        //}
+        hitboxAtaque.enabled = false;
+        visualAtaque.enabled = false;
     }
 
     void Update()
