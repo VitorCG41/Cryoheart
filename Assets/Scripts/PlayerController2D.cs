@@ -13,9 +13,11 @@ public class PlayerController2D : MonoBehaviour
     public float velocidade = 5f;
 
     private bool indoDireita;
+    public BoxCollider2D hitboxAtaque;
+    public SpriteRenderer visualAtaque;
 
     // Pulo 
-    
+
     [SerializeField] private Transform groundCheck;
     [SerializeField] private float groundCheckRadius = 0.1f;
     [SerializeField] private LayerMask groundLayer; 
@@ -25,16 +27,6 @@ public class PlayerController2D : MonoBehaviour
     public float forcaPulo = 15f;
     public int maxPulosExtras = 0;
     private int pulosRestantes = 0;
-
-    // Ataque 
-
-    public BoxCollider2D hitboxAtaque;
-    public SpriteRenderer visualAtaque;
-           
-    public float taxaAtaque = 3f;
-    public float duracaoAtaque = 0.2f;
-
-    float nextAttackTime = 0f;
 
     private void Awake()
     {
@@ -65,32 +57,14 @@ public class PlayerController2D : MonoBehaviour
 
     }
 
-    public void OnAtack(InputValue value)
+    private void FixedUpdate()
     {
-        if (Time.time >= nextAttackTime)
-        {
-            StartCoroutine(Atacar());
-            nextAttackTime = Time.time + 1f / taxaAtaque;
-            Debug.Log("Atacou");
-        }
-    }
-
-    IEnumerator Atacar()
-    {
-        hitboxAtaque.enabled = true;
-        visualAtaque.enabled = true;
-
-        yield return new WaitForSeconds(duracaoAtaque);
-
-        hitboxAtaque.enabled = false;
-        visualAtaque.enabled = false;
+        Vector2 deslocamento = moveDirection * velocidade * Time.deltaTime;
+        transform.Translate(deslocamento);
     }
 
     void Update()
     {
-        Vector2 deslocamento = moveDirection * velocidade * Time.deltaTime;
-        transform.Translate(deslocamento);
-
         float inputX = moveDirection.x;
 
         if (inputX < 0) indoDireita = false;

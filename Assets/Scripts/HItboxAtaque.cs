@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class HitboxAttack : MonoBehaviour
 {
-    public int damage = 1;                    // dano do ataque
-    public string enemyTag = "Inimigo";       // tag dos inimigos
+    public int dano = 1;                   
+    public string enemyTag = "Inimigo";       
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -12,7 +12,7 @@ public class HitboxAttack : MonoBehaviour
             Enemy enemy = other.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.receberDano(damage);
+                enemy.receberDano(dano);
             }
         }
     }
