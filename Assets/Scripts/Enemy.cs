@@ -1,16 +1,16 @@
+using System.Collections;
 using UnityEditor.Rendering.Analytics;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
     public int vidaMaxima = 1;
     public int vida = 1;
 
     public int danoDeContato = 1;
 
     public LayerMask layerPlayer;
-    public float raioDeVerificacao = 0.65f;
+    public float raioDeVerificacao = 0.8f;
 
     void Start() {  }
 
@@ -19,9 +19,9 @@ public class Enemy : MonoBehaviour
         Collider2D playerDetectado = Physics2D.OverlapCircle(transform.position, raioDeVerificacao, layerPlayer);
         if (playerDetectado != null) { 
             PlayerAttack player = playerDetectado.GetComponent<PlayerAttack>();
-            //player.receberDano(danoDeContato);
-            Debug.Log("acertou o jogador");
+            player.receberDano(danoDeContato);
         }
+        
     }
 
     public void receberDano(int dano)

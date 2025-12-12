@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class PlayerAttack : MonoBehaviour
 
     public int vidaMaxima = 3;
     public int vida = 3;
+
+    public Slider barraDeVida;
+    public GameObject telaMorte;
 
     // --------- Ataque --------- //
 
@@ -31,6 +35,8 @@ public class PlayerAttack : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+
+        barraDeVida.maxValue = vidaMaxima;
     }
 
     // --------- Funções para a Vida --------- //
@@ -38,10 +44,10 @@ public class PlayerAttack : MonoBehaviour
     public void receberDano(int dano)
     {
         vida -= dano;
-        Debug.Log(vida);
         if (vida <= 0)
         {
-            Destroy(gameObject);
+            telaMorte.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 
@@ -85,6 +91,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-       
+        barraDeVida.value = vida;
     }
 }
