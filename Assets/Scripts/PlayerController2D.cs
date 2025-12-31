@@ -16,6 +16,10 @@ public class PlayerController2D : MonoBehaviour
     public BoxCollider2D hitboxAtaque;
     public SpriteRenderer visualAtaque;
 
+    // Animação Movimento
+
+    private Animator animator;
+
     // Pulo 
 
     [SerializeField] private Transform groundCheck;
@@ -32,6 +36,7 @@ public class PlayerController2D : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     public void OnMove(InputValue value)
@@ -74,14 +79,14 @@ public class PlayerController2D : MonoBehaviour
         {
             hitboxAtaque.transform.localPosition = new Vector3(0.7f, 0f, 0f);
             hitboxAtaque.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-            sr.flipX = false;
+            sr.flipX = true;
         }
 
         else if (!indoDireita)
         {
             hitboxAtaque.transform.localPosition = new Vector3(-0.7f, 0f, 0f);
             hitboxAtaque.transform.rotation = Quaternion.Euler(0f, 0f, 270f);
-            sr.flipX = true;
+            sr.flipX = false;
         }
 
         estaNoSolo = Physics2D.OverlapCircle(
@@ -90,7 +95,12 @@ public class PlayerController2D : MonoBehaviour
             groundLayer
         );
 
-        if (estaNoSolo) pulosRestantes = maxPulosExtras; 
+        if (estaNoSolo) pulosRestantes = maxPulosExtras;
+
+        // Animação de Andar
+
+        if (inputX != 0 && estaNoSolo) { animator.SetBool("estaAndando", true); }
+        else { animator.SetBool("estaAndando", false); }
 
     }
 
