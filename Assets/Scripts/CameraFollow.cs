@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraFollow2D : MonoBehaviour
 {
     public Transform target;
-    public float speed = 5f;
+    public float speed = 15f;
     public Vector3 offset;
 
     void Update()

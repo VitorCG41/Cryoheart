@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4f982c0ba4384934e9275c03b4f95db6
+guid: 1e0ea746a4e4c9a47a7ab7ab876eb38d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -879136723985946091
-    second: Walk-frame-6_0
+      213: -5788802291748688381
+    second: pixil-frame-2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walk-frame-6_0
+      name: pixil-frame-2_0
       rect:
         serializedVersion: 2
-        x: 39
-        y: 11
-        width: 64
-        height: 108
+        x: 31
+        y: 31
+        width: 66
+        height: 66
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 51a21d1becdacc3f0800000000000000
-      internalID: -879136723985946091
+      spriteID: 30e2a5d6cfa0aafa0800000000000000
+      internalID: -5788802291748688381
       vertices: []
       indices: 
       edges: []
@@ -138,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Walk-frame-6_0: -879136723985946091
+      pixil-frame-2_0: -5788802291748688381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

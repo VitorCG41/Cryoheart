@@ -64,8 +64,17 @@ public class PlayerController2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector2 deslocamento = moveDirection * velocidade * Time.deltaTime;
-        transform.Translate(deslocamento);
+        Vector3 deslocamento = moveDirection * velocidade * Time.deltaTime;
+        transform.position = transform.position + deslocamento;
+
+        Vector3 posicao = transform.position;
+        posicao.x = Mathf.Round(posicao.x * 64f) / 64f;
+        transform.position = posicao;   
+
+        if (estaNoSolo)
+        {
+            pulosRestantes = maxPulosExtras;
+        }
     }
 
     void Update()
@@ -94,8 +103,6 @@ public class PlayerController2D : MonoBehaviour
             groundCheckRadius,
             groundLayer
         );
-
-        if (estaNoSolo) pulosRestantes = maxPulosExtras;
 
         // Animação de Andar
 
